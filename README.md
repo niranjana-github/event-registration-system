@@ -4,7 +4,7 @@ A simple Event Registration Web App with both frontend & backend, built as part 
 
 🔗 Live Demo (Frontend): https://niranjana-github.github.io/event-registration-system/
 
-🔗 Backend API: 
+🔗 Backend API: https://event-registration-system-avho.onrender.com/
 
 🚀 Features
 
@@ -58,3 +58,10 @@ GET /registrations → fetch all registrations
 Frontend shows success message or error.
 
 Registrations can be viewed from the View Registrations page.
+
+
+🌐 Deployment
+
+Frontend → Deployed using GitHub Pages
+
+Backend → Deployed on Render
