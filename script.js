@@ -1,4 +1,4 @@
-// Email validation regex
+// Email validation regex n
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Form elements
@@ -84,7 +84,7 @@ if (form) {
 
         try {
             // Send data to backend API
-            const response = await fetch('/register', {
+            const response = await fetch('https://event-registration-system-avho.onrender.com/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ if (form) {
 // Load registrations from backend
 async function loadRegistrations() {
     try {
-        const response = await fetch('/registrations');
+        const response = await fetch('https://event-registration-system-avho.onrender.com/');
         const result = await response.json();
         
         if (result.success) {
