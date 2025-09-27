@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Summit 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.05"/><circle cx="10" cy="60" r="1" fill="white" opacity="0.08"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease 0.4s both;
+        }
+
+        .event-detail {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+        }
+
+        .event-detail h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .event-detail p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            animation: slideInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .main-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .speaker-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .speaker-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .speaker-info {
+            padding: 2rem;
+        }
+
+        .speaker-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .speaker-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Schedule Section */
+        .schedule-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .schedule-day {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .day-header h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-items {
+            padding: 1rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-item:hover {
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateX(5px);
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+            min-width: 120px;
+        }
+
+        .schedule-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .schedule-content p {
+            color: #666;
+        }
+
+        /* Registration Form */
+        .registration-section {
+            background: linear-gradient(135deg, #7770de 0%, #764ba2 100%);
+            color: white;
+
+            padding: 80px 0;
+        }
+
+color-whiteee{
+    color:white;
+    text-align:center;
+}
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #00b894, #00a085);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+    animation: slideIn 0.5s ease;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .form-container.success-shown {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+        .form-group input.error {
+            border-color: #e74c3c;
+            background: #fdf2f2;
+        }
+
+        /* Registrations List */
+        .registrations-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .registrations-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .registration-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .registration-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .event-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                margin: 0 1rem;
+                padding: 2rem;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Tech Summit 2025</div>
+           <ul class="nav-menu">
+    <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+    <li><a class="nav-link" onclick="showPage('about')">About</a></li>
+    <li><a class="nav-link" onclick="showPage('speakers')">Speakers</a></li>
+    <li><a class="nav-link" onclick="showPage('schedule')">Schedule</a></li>
+    <li><a class="nav-link" onclick="showPage('register')">Register</a></li>
+    <li><a class="nav-link" onclick="showPage('registrations')">View Registrations</a></li>
+</ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="main-content active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>🚀 Tech Summit 2025</h1>
+                <p class="hero-subtitle">The Ultimate Technology Conference for Innovation and Networking</p>
+                
+                <div class="event-details">
+                    <div class="event-detail">
+                        <h3>📅 Date</h3>
+                        <p>October 1-2, 2025</p>
+                    </div>
+                    <div class="event-detail">
+                        <h3>🕐 Time</h3>
+                        <p>9:00 AM - 4:00 PM</p>
+                    </div>
+                    <div class="event-detail">
+                        <h3>📍 Venue</h3>
+                        <p>TP2<br>712</p>
+                    </div>
+                    <div class="event-detail">
+                        <h3>👥 Attendees</h3>
+                        <p>500+ Expected</p>
+                    </div>
+                </div>
+                
+                <a class="cta-button" onclick="showPage('register')">Register Now - Free Entry!</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="main-content">
+        <section class="about-section">
+            <div class="section-content">
+                <h2 class="section-title">About Tech Summit 2025</h2>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>🎯 Purpose</h3>
+                        <p>Tech Summit 2025 is designed to bring together technology enthusiasts and innovators to explore the latest trends in artificial intelligence, web development, cybersecurity, and emerging technologies. Our mission is to foster knowledge sharing and create meaningful connections within the tech community.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>👨‍💼 Who Should Attend</h3>
+                        <p><strong>Students:</strong> Computer Science, IT, and Engineering students looking to expand their knowledge and network with industry professionals.</p>
+                        <p><strong>Professionals:</strong> Software developers, data scientists, product managers, and tech entrepreneurs seeking to stay ahead of industry trends.</p>
+                        <p><strong>Enthusiasts:</strong> Anyone passionate about technology and innovation.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>✨ Key Highlights</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>🎤 <strong>Keynote Speeches</strong> from industry leaders</li>
+                            <li>🛠️ <strong>Hands-on Workshops</strong> on latest technologies</li>
+                            <li>🏆 <strong>Hackathon Competition</strong> with amazing prizes</li>
+                            <li>🤝 <strong>Networking Sessions</strong> with peers and mentors</li>
+                            <li>🎁 <strong>Startup Showcase</strong> and pitch competitions</li>
+                            <li>📚 <strong>Technical Sessions</strong> on AI, Web3, Cloud</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Speakers Page -->
+    <div id="speakers" class="main-content">
+        <section class="about-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Amazing Speakers</h2>
+                
+                <div class="speakers-grid">
+                    <div class="speaker-card">
+                        <div class="speaker-image">👨‍💻</div>
+                        <div class="speaker-info">
+                            <h3>Dr. Sarah Chen</h3>
+                            <p class="speaker-title">AI Research Director, TechCorp</p>
+                            <p><strong>Session:</strong> "The Future of Artificial Intelligence in Healthcare"</p>
+                            <p>Dr. Chen is a renowned AI researcher with 15+ years of experience in machine learning and healthcare applications. She has published over 100 papers and holds 20 patents in AI technology.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <div class="speaker-image">🧑🏽‍💻</div>
+                        <div class="speaker-info">
+                            <h3>Marcus Rodriguez</h3>
+                            <p class="speaker-title">CTO, CloudTech Solutions</p>
+                            <p><strong>Session:</strong> "Building Scalable Web Applications with Modern Architecture"</p>
+                            <p>Marcus is a full-stack developer turned CTO who has built systems serving millions of users. He's passionate about sharing knowledge on modern web development practices.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <div class="speaker-image">👩🏻‍💻</div>
+                        <div class="speaker-info">
+                            <h3>Priya Sharma</h3>
+                            <p class="speaker-title">Cybersecurity Expert, SecureNet</p>
+                            <p><strong>Session:</strong> "Cybersecurity in the Age of Remote Work"</p>
+                            <p>Priya is a cybersecurity specialist with expertise in ethical hacking and digital forensics. She has helped numerous organizations strengthen their security posture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <div class="speaker-image">👩‍💼</div>
+                        <div class="speaker-info">
+                            <h3>James Wilson</h3>
+                            <p class="speaker-title">Startup Founder, InnovateLab</p>
+                            <p><strong>Session:</strong> "From Idea to IPO: The Startup Journey"</p>
+                            <p>James is a serial entrepreneur who has founded 3 successful startups. He mentors young entrepreneurs and shares insights on building successful tech companies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Schedule Page -->
+    <div id="schedule" class="main-content">
+        <section class="about-section">
+            <div class="section-content">
+                <h2 class="section-title">Event Schedule</h2>
+                
+                <div class="schedule-container">
+                    <!-- Day 1 -->
+                    <div class="schedule-day">
+                        <div class="day-header">
+                            <h3>Day 1 - October 1, 2025</h3>
+                            <p>Innovation & Learning</p>
+                        </div>
+                        <div class="schedule-items">
+                            <div class="schedule-item">
+                                <div class="schedule-time">9:00 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Registration & Welcome Coffee</h4>
+                                    <p>Check-in, networking, and breakfast</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">10:00 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Opening Ceremony & Inauguration</h4>
+                                    <p>Welcome address by organizing committee</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">11:00 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Keynote: "The Future of AI in Healthcare"</h4>
+                                    <p>Dr. Sarah Chen, AI Research Director</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">12:30 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Lunch Break & Networking</h4>
+                                    <p>Catered lunch and informal networking</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">2:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Workshop: "Modern Web Development"</h4>
+                                    <p>Hands-on session with Marcus Rodriguez</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">3:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Panel Discussion: "Tech Trends 2025"</h4>
+                                    <p>Industry experts share insights on emerging technologies</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">4:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Day 1 Wrap-up & Evening Networking</h4>
+                                    <p>Refreshments and networking session</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="schedule-day">
+                        <div class="day-header">
+                            <h3>Day 2 - October 2, 2025</h3>
+                            <p>Competition & Collaboration</p>
+                        </div>
+                        <div class="schedule-items">
+                            <div class="schedule-item">
+                                <div class="schedule-time">9:00 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Morning Coffee & Team Formation</h4>
+                                    <p>Hackathon team registration and networking</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">10:00 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Hackathon Kickoff</h4>
+                                    <p>24-hour hackathon competition begins</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">11:30 AM</div>
+                                <div class="schedule-content">
+                                    <h4>Workshop: "Cybersecurity Essentials"</h4>
+                                    <p>Security best practices with Priya Sharma</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">1:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Lunch & Startup Showcase</h4>
+                                    <p>Lunch with startup pitch presentations</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">2:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Talk: "From Idea to IPO"</h4>
+                                    <p>Entrepreneurship insights from James Wilson</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">3:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Hackathon Presentations</h4>
+                                    <p>Teams present their solutions to judges</p>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-time">4:00 PM</div>
+                                <div class="schedule-content">
+                                    <h4>Awards Ceremony & Closing</h4>
+                                    <p>Prize distribution and closing remarks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="main-content">
+        <section class="registration-section">
+            <div class="section-content">
+                <h2 class="color-whiteee text-center" style="color: white; margin-bottom: 2rem; font-size:40px;">Register for the event</h2>
+                
+                <div class="form-container">
+                    <!-- Replace the form section in your register page with this: -->
+<form id="registrationForm">
+    <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+        <div class="error-message" id="nameError">Please enter your full name</div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+    </div>
+
+    <div class="form-group">
+        <label for="registerNo">Register Number *</label>
+        <input type="text" id="registerNo" name="registerNo" placeholder="RA2*********" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+91**********">
+    </div>
+
+    <div class="form-group">
+        <label for="organization">Branch</label>
+        <input type="text" id="organization" name="organization" placeholder="BTECH CSE, IT....">
+    </div>
+
+    <div class="form-group">
+        <label for="role">Who you are</label>
+        <select id="role" name="role">
+            <option value="student">Student</option>
+            <option value="faculty">Faculty</option>
+            <option value="researcher">Research scholar</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="experience">Experience Level</label>
+        <select id="experience" name="experience">
+            <option value="">Select experience level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="expert">Expert</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="interests">Areas of Interest (Optional)</label>
+        <textarea id="interests" name="interests" placeholder="AI, Web Development, Cybersecurity, etc."></textarea>
+    </div>
+
+    <button type="submit" class="register-btn" id="submitBtn">
+        <span id="btnText">Register Now - It's Free!</span>
+    </button>
+</form>
+
+                    <div class="success-message" id="successMessage">
+                        <h3>🎊 Registration Successful!</h3>
+                        <p>Thank you for registering for Tech Summit 2025! We'll send you confirmation details and event updates soon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Registrations Page -->
+    <div id="registrations" class="main-content">
+        <section class="registrations-section">
+            <div class="registrations-container">
+                <h2 class="section-title">Event Registrations</h2>
+                
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalRegistrations">0</span>
+                        <span class="stat-label">Total Registrations</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="studentsCount">0</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="professionalsCount">0</span>
+                        <span class="stat-label">Professionals</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="organizationsCount">0</span>
+                        <span class="stat-label">Organizations</span>
+                    </div>
+                </div>
+
+                <div id="registrationsContainer">
+                    <div class="registration-item" style="text-align: center; font-style: italic; color: #666;">
+                        No registrations yet. Be the first to register! 🚀
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let registrations = [];
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            const allPages = document.querySelectorAll('.main-content');
+            allPages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update active nav link
+            const allNavLinks = document.querySelectorAll('.nav-link');
+            allNavLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Load registrations if viewing registrations page
+            if (pageId === 'registrations') {
+                loadAndDisplayRegistrations();
+            }
+        }
+
+        // Form elements
+        const form = document.getElementById('registrationForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const successMessage = document.getElementById('successMessage');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+
+        // Real-time validation
+        if (nameInput) nameInput.addEventListener('input', validateName);
+        if (emailInput) emailInput.addEventListener('input', validateEmail);
+
+        function validateName() {
+            const name = nameInput.value.trim();
+            if (name.length === 0) {
+                showError(nameInput, nameError, 'Please enter your full name');
+                return false;
+            } else if (name.length < 2) {
+                showError(nameInput, nameError, 'Name must be at least 2 characters long');
+                return false;
+            } else {
+                hideError(nameInput, nameError);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email.length === 0) {
+                showError(emailInput, emailError, 'Please enter your email address');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showError(emailInput, emailError, 'Please enter a valid email address');
+                return false;
+            } else {
+                hideError(emailInput, emailError);
+                return true;
+            }
+        }
+
+        function showError(input, errorElement, message) {
+            input.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(input, errorElement) {
+            input.classList.remove('error');
+            errorElement.style.display = 'none';
+        }
+
+        // Form submission
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const isNameValid = validateName();
+                const isEmailValid = validateEmail();
+
+                if (!isNameValid || !isEmailValid) {
+                    return;
+                }
+
+                const formData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    organization: document.getElementById('organization').value.trim(),
+                    role: document.getElementById('role').value,
+                    experience: document.getElementById('experience').value,
+                    interests: document.getElementById('interests').value.trim()
+                };
+
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.innerHTML = '<span class="loading"></span> Registering...';
+
+                try {
+                    // Send data to backend API
+                    const response = await fetch('/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+
+                        console.log('Registration successful:', result.data);
+                    } else {
+                        alert('Registration failed: ' + result.error);
+                    }
+
+                } catch (error) {
+                    alert('Registration failed. Please check your connection and try again.');
+                    console.error('Registration error:', error);
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Register Now - It\'s Free!';
+                }
+            });
+        }
+
+        // Load registrations from backend
+        async function loadRegistrations() {
+            try {
+                const response = await fetch('/registrations');
+                const result = await response.json();
+                
+                if (result.success) {
+                    registrations = result.data;
+                    return registrations;
+                } else {
+                    console.error('Failed to load registrations:', result.error);
+                    return [];
+                }
+            } catch (error) {
+                console.error('Error loading registrations:', error);
+                return [];
+            }
+        }
+
+        async function loadAndDisplayRegistrations() {
+            const registrations = await loadRegistrations();
+            displayRegistrations(registrations);
+            updateStats(registrations);
+        }
+
+        function displayRegistrations(registrations) {
+            const container = document.getElementById('registrationsContainer');
+            
+            if (!container) return;
+
+            if (registrations.length === 0) {
+                container.innerHTML = '<div class="registration-item" style="text-align: center; font-style: italic; color: #666;">No registrations yet. Be the first to register! 🚀</div>';
+                return;
+            }
+
+            const registrationsHTML = registrations
+                .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+                .map((reg, index) => `
+                    <div class="registration-item">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                            <strong style="color: #667eea;">#${registrations.length - index}</strong>
+                            <small style="color: #666;">${new Date(reg.timestamp).toLocaleString()}</small>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                            <div><strong>Name:</strong> ${reg.name}</div>
+                            <div><strong>Email:</strong> ${reg.email}</div>
+                            ${reg.phone ? `<div><strong>Phone:</strong> ${reg.phone}</div>` : ''}
+                            ${reg.organization ? `<div><strong>Organization:</strong> ${reg.organization}</div>` : ''}
+                            ${reg.role ? `<div><strong>Role:</strong> ${reg.role}</div>` : ''}
+                            ${reg.experience ? `<div><strong>Experience:</strong> ${reg.experience}</div>` : ''}
+                        </div>
+                        ${reg.interests ? `<div style="margin-top: 10px;"><strong>Interests:</strong> ${reg.interests}</div>` : ''}
+                    </div>
+                `).join('');
+
+            container.innerHTML = registrationsHTML;
+        }
+
+        function updateStats(registrations) {
+            const totalElement = document.getElementById('totalRegistrations');
+            const studentsElement = document.getElementById('studentsCount');
+            const professionalsElement = document.getElementById('professionalsCount');
+            const organizationsElement = document.getElementById('organizationsCount');
+
+            if (totalElement) totalElement.textContent = registrations.length;
+            
+            const students = registrations.filter(reg => reg.role === 'student').length;
+            if (studentsElement) studentsElement.textContent = students;
+
+            const professionals = registrations.filter(reg => 
+                reg.role && reg.role !== 'student' && reg.role !== ''
+            ).length;
+            if (professionalsElement) professionalsElement.textContent = professionals;
+
+            const organizations = new Set(
+                registrations
+                    .filter(reg => reg.organization && reg.organization !== '')
+                    .map(reg => reg.organization.toLowerCase())
+            ).size;
+            if (organizationsElement) organizationsElement.textContent = organizations;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
