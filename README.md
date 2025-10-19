@@ -1,215 +1,157 @@
-# 🎉 Tech Summit 2025 - Event Registration System
+🚀 BuildCon 2025 – Event Registration System
 
-> A full-stack event management platform with multi-page website, intelligent registration system, and real-time data management.
+A full-stack event registration platform featuring secure authentication, real-time data management, and a responsive user interface.
 
-🔗 Live Demo (Frontend): https://niranjana-github.github.io/event-registration-system/
+🔗 Deployment Link: https://event-registration-dusky.vercel.app/
 
-🔗 Backend API: https://event-registration-system-avho.onrender.com/
+📋 Problem Statement
 
+Educational institutions and organizations hosting events often face challenges with manual registration systems:
 
-## 📋 Problem Statement
+🔹 Time-consuming and error-prone data collection
+🔹 No authentication or data protection
+🔹 Poor user experience and form validation
+🔹 Lack of centralized data and analytics
+🔹 Limited access to event details and updates
 
-Educational institutions and tech organizations hosting conferences face challenges with:
-- **Manual Registration**: Time-consuming paper-based processes prone to errors
-- **Poor Information Access**: No centralized platform for event details, speakers, and schedules
-- **Data Management**: Spreadsheets lack real-time validation and duplicate prevention
-- **User Experience**: Attendees expect modern, mobile-friendly interfaces
+💡 Our Solution
 
-**Solution:** A comprehensive web platform providing seamless event registration, complete event information, real-time statistics, and persistent data storage with an intuitive user interface.
+BuildCon 2025 solves these issues through:
 
----
+✅ Secure authentication using Supabase
+✅ Smart registration forms with validation
+✅ Centralized database for all records
+✅ Real-time analytics and dashboards
+✅ Responsive multi-page design with event details
 
-## 🛠️ Tech Stack
+🛠️ Tech Stack
+Frontend
 
-### **Frontend**
-- **HTML5** - Semantic markup and structure
-- **CSS3** - Modern styling with animations, gradients, and responsive design
-- **JavaScript (ES6+)** - Client-side logic, form validation, and API integration
-- **Fetch API** - Asynchronous HTTP requests
+🔸 HTML5, CSS3, JavaScript (ES6+) – Structure, styling, and interactivity
+🔸 Supabase JS Client – Authentication and real-time database connection
 
-### **Backend**
-- **Node.js** - Runtime environment
-- **Express.js** - Web application framework
-- **File System (fs)** - JSON-based data persistence
-- **CORS** - Cross-origin resource sharing
+Backend
 
-### **Key Features**
-- RESTful API design
-- Real-time form validation
-- Duplicate email prevention
-- Responsive design (mobile-first)
-- Auto-incrementing registration numbers
-- Statistics dashboard
+🔸 Node.js, Express.js – Server logic and API endpoints
+🔸 Supabase (PostgreSQL) – Cloud database for secure data storage
 
----
+Deployment
 
-## 🚀 Steps to Run the Project
+🔸 Vercel – Frontend hosting
+🔸 Supabase Cloud – Database and authentication
+🔸 GitHub – Version control
 
-### **Prerequisites**
-- Node.js (v14 or higher)
-- npm (comes with Node.js)
-- Git
+🎯 Key Features
+Authentication
 
-### **Installation**
+🟢 Secure user login/signup
+🟢 Email and password-based access
+🟢 Session handling with Supabase
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/tech-summit-2025.git
-cd tech-summit-2025
+Event Management
 
-# 2. Install dependencies
+🟢 Multi-page event website
+🟢 Registration form with validation
+🟢 Dashboard with total registration statistics
+
+Data Handling
+
+🟢 Real-time Supabase database
+🟢 Unique email validation
+🟢 Persistent data storage
+
+User Experience
+
+🟢 Responsive design for all devices
+🟢 Smooth transitions and animations
+🟢 Modern UI using gradients and flexbox
+
+🚀 Steps to Run the Project
+Prerequisites
+
+➤ Node.js (v14 or higher)
+➤ npm or yarn
+➤ Git
+➤ Supabase account (for database setup)
+
+1️⃣ Clone the Repository
+git clone https://github.com/yourusername/buildcon-2025.git
+cd buildcon-2025
+
+2️⃣ Install Dependencies
 npm install
 
-# 3. Start the server
+3️⃣ Configure Supabase
+
+Supabase credentials are directly added in the HTML files (auth.html and index.html) using JavaScript:
+
+const SUPABASE_URL = 'https://ykmzlirhxtvzxxqxrwpb.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbXpsaXJoeHR2enh4cXhyd3BiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2ODk3MDIsImV4cCI6MjA3NjI2NTcwMn0.-r9_D2czMy3fN8hPiiB6zJxZIzmucjl0ICCBYFA8-us';
+
+
+4️⃣ Create the Database Table
+
+Run this SQL in Supabase SQL Editor:
+
+CREATE TABLE registrations (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  register_no TEXT,
+  phone TEXT,
+  organization TEXT,
+  role TEXT,
+  experience TEXT,
+  interests TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+5️⃣ Start the Server
 npm start
 
-# 4. Open browser
-# Navigate to http://localhost:3000
-```
+Then visit: http://localhost:3000
 
-### **Testing**
+🌐 Live Deployment
 
-```bash
-# Test API health
-curl http://localhost:3000/health
+You can directly access the deployed version here:
+👉 https://event-registration-dusky.vercel.app/
 
-# Test registration
-curl -X POST http://localhost:3000/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"John Doe","email":"john@example.com"}'
+Steps:
 
-# View all registrations
-curl http://localhost:3000/registrations
-```
+🔹 Sign up or log in
 
----
+🔹 Explore event details
 
-## 📁 Project Structure
+🔹 Register for BuildCon 2025
 
-```
-tech-summit-2025/
-├── server.js              # Express server with API routes
-├── package.json          # Dependencies and scripts
-├── registrations.json    # JSON database (auto-created)
-├── public/
-│   └── index.html       # Frontend (HTML + CSS + JS)
-└── README.md            # Documentation
-```
+🔹 View registration statistics
 
----
+📸 Screenshots
 
-## 🔌 API Endpoints
+📍 Authentication Page
+<img width="956" height="482" alt="image" src="https://github.com/user-attachments/assets/0252befa-8cf5-4990-9352-def8d733914c" />
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/` | Serve main website |
-| `POST` | `/register` | Submit new registration |
-| `GET` | `/registrations` | Get all registrations |
-| `GET` | `/registrations/count` | Get total count |
-| `DELETE` | `/registrations/:id` | Delete registration |
-| `GET` | `/health` | Server health check |
 
-### **Example API Response**
+📍 Home Page
+<img width="944" height="494" alt="image" src="https://github.com/user-attachments/assets/2bcda0d8-2135-4688-9644-5f9b8293d3f6" />
 
-```json
-{
-  "success": true,
-  "message": "Registration successful!",
-  "data": {
-    "id": 1697536800000,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "phone": "+911234567890",
-    "organization": "BTECH CSE",
-    "role": "student",
-    "registrationNumber": 1,
-    "timestamp": "2025-10-17T10:00:00.000Z"
-  }
-}
-```
 
----
+📍 Registration Form
+<img width="938" height="486" alt="image" src="https://github.com/user-attachments/assets/f77f5d1d-e894-47ab-88c5-48df5eb8fd71" />
 
-## ✨ Features
-
-### **Multi-Page Website**
-- **Home**: Event overview with key details (date, time, venue, attendees)
-- **About**: Event purpose, target audience, and highlights
-- **Speakers**: Speaker profiles with session information
-- **Schedule**: Day-by-day event timeline
-- **Register**: Comprehensive registration form with validation
-- **View Registrations**: Public dashboard with statistics
-
-### **Smart Registration**
-- Real-time validation with visual feedback
-- Email format verification
-- Duplicate email prevention
-- Required field enforcement
-- Loading states and success messages
-
-### **Data Management**
-- JSON file-based persistent storage
-- Automatic ID generation
-- Auto-incrementing registration numbers
-- ISO timestamp tracking
-- Data normalization (email lowercase, trimmed fields)
-
-### **User Experience**
-- Smooth animations and transitions
-- Mobile-responsive design
-- Professional gradient UI
-- Hover effects and interactivity
-- Instant feedback on all actions
-
----
-
-## 🧪 Testing Checklist
-
-- [x] All navigation links work
-- [x] Form validation (empty fields, invalid email, duplicates)
-- [x] Registration submission and success message
-- [x] Data persistence in JSON file
-- [x] Console logging of registrations
-- [x] Statistics dashboard updates
-- [x] Responsive design on mobile/tablet/desktop
-- [x] API endpoints return correct responses
-- [x] Browser compatibility (Chrome, Firefox, Safari, Edge)
-
----
-
-## 🚀 Deployment
-
-**Render:**
-1. Push code to GitHub
-2. Connect repository on render.com
-3. Set build command: `npm install`
-4. Set start command: `npm start`
+📍 Registration Dashboard
+<img width="937" height="486" alt="image" src="https://github.com/user-attachments/assets/faebbdfe-c849-4516-a474-f6984f6f8dd4" />
 
 
 
-## 🔒 Security
+🔒 Security Highlights
 
-- Input validation and sanitization
-- Email format verification
-- Duplicate prevention
-- Error handling without exposing internals
-- CORS configuration
-- Safe file system operations
+✅ Passwords encrypted via Supabase Auth
 
----
+✅ JWT-based authentication
 
-## 📈 Future Enhancements
+✅ Input validation and sanitization
 
-- Admin authentication (JWT)
-- Database integration (MongoDB)
-- Email confirmation system
-- QR code ticket generation
-- Payment integration
-- Real-time notifications
-- Advanced analytics
+✅ CORS protection
 
----
-
-
-
-**⭐ Built with Node.js, Express, and modern web technologies**
+✅ HTTPS deployment via Vercel
