@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Summit 2025</title>
+    <title>BuildCon 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
             margin: 0;
@@ -589,17 +591,18 @@ color-whiteee{
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Tech Summit 2025</div>
-           <ul class="nav-menu">
-    <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
-    <li><a class="nav-link" onclick="showPage('about')">About</a></li>
-    <li><a class="nav-link" onclick="showPage('speakers')">Speakers</a></li>
-    <li><a class="nav-link" onclick="showPage('schedule')">Schedule</a></li>
-    <li><a class="nav-link" onclick="showPage('register')">Register</a></li>
-    <li><a class="nav-link" onclick="showPage('registrations')">View Registrations</a></li>
-</ul>
+            <div class="logo">BuildCon 2025</div>
+            <ul class="nav-menu">
+                <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a class="nav-link" onclick="showPage('about')">About</a></li>
+                <li><a class="nav-link" onclick="showPage('speakers')">Speakers</a></li>
+                <li><a class="nav-link" onclick="showPage('schedule')">Schedule</a></li>
+                <li><a class="nav-link" onclick="showPage('register')">Register</a></li>
+                <li><a class="nav-link" onclick="showPage('registrations')">View Registrations</a></li>
+                <li><a class="nav-link" onclick="logout()" style="background: rgba(255, 77, 77, 0.8);">🚪 Logout</a></li>
+            </ul>
             <div class="mobile-menu">
                 <span></span>
                 <span></span>
@@ -612,13 +615,13 @@ color-whiteee{
     <div id="home" class="main-content active">
         <section class="hero">
             <div class="hero-content">
-                <h1>🚀 Tech Summit 2025</h1>
+                <h1>🚀 BuildCon 2025</h1>
                 <p class="hero-subtitle">The Ultimate Technology Conference for Innovation and Networking</p>
                 
                 <div class="event-details">
                     <div class="event-detail">
                         <h3>📅 Date</h3>
-                        <p>October 1-2, 2025</p>
+                        <p>November 1-2, 2025</p>
                     </div>
                     <div class="event-detail">
                         <h3>🕐 Time</h3>
@@ -643,12 +646,12 @@ color-whiteee{
     <div id="about" class="main-content">
         <section class="about-section">
             <div class="section-content">
-                <h2 class="section-title">About Tech Summit 2025</h2>
+                <h2 class="section-title">About BuildCon 2025</h2>
                 
                 <div class="about-grid">
                     <div class="about-card">
                         <h3>🎯 Purpose</h3>
-                        <p>Tech Summit 2025 is designed to bring together technology enthusiasts and innovators to explore the latest trends in artificial intelligence, web development, cybersecurity, and emerging technologies. Our mission is to foster knowledge sharing and create meaningful connections within the tech community.</p>
+                        <p>BuildCon 2025 is designed to bring together technology enthusiasts and innovators to explore the latest trends in artificial intelligence, web development, cybersecurity, and emerging technologies. Our mission is to foster knowledge sharing and create meaningful connections within the tech community.</p>
                     </div>
                     
                     <div class="about-card">
@@ -662,7 +665,7 @@ color-whiteee{
                         <h3>✨ Key Highlights</h3>
                         <ul style="list-style: none; padding: 0;">
                             <li>🎤 <strong>Keynote Speeches</strong> from industry leaders</li>
-                            <li>🛠️ <strong>Hands-on Workshops</strong> on latest technologies</li>
+                            <li>🛠 <strong>Hands-on Workshops</strong> on latest technologies</li>
                             <li>🏆 <strong>Hackathon Competition</strong> with amazing prizes</li>
                             <li>🤝 <strong>Networking Sessions</strong> with peers and mentors</li>
                             <li>🎁 <strong>Startup Showcase</strong> and pitch competitions</li>
@@ -735,7 +738,7 @@ color-whiteee{
                     <!-- Day 1 -->
                     <div class="schedule-day">
                         <div class="day-header">
-                            <h3>Day 1 - October 1, 2025</h3>
+                            <h3>Day 1 - November 1, 2025</h3>
                             <p>Innovation & Learning</p>
                         </div>
                         <div class="schedule-items">
@@ -794,7 +797,7 @@ color-whiteee{
                     <!-- Day 2 -->
                     <div class="schedule-day">
                         <div class="day-header">
-                            <h3>Day 2 - October 2, 2025</h3>
+                            <h3>Day 2 - November 2, 2025</h3>
                             <p>Competition & Collaboration</p>
                         </div>
                         <div class="schedule-items">
@@ -877,12 +880,12 @@ color-whiteee{
 
     <div class="form-group">
         <label for="registerNo">Register Number *</label>
-        <input type="text" id="registerNo" name="registerNo" placeholder="RA2*********" required>
+        <input type="text" id="registerNo" name="registerNo" placeholder="RA24**" required>
     </div>
 
     <div class="form-group">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+91**********">
+        <input type="tel" id="phone" name="phone" placeholder="+91**">
     </div>
 
     <div class="form-group">
@@ -923,7 +926,7 @@ color-whiteee{
 
                     <div class="success-message" id="successMessage">
                         <h3>🎊 Registration Successful!</h3>
-                        <p>Thank you for registering for Tech Summit 2025! We'll send you confirmation details and event updates soon.</p>
+                        <p>Thank you for registering for BuildCon 2025! We'll send you confirmation details and event updates soon.</p>
                     </div>
                 </div>
             </div>
@@ -964,29 +967,56 @@ color-whiteee{
         </section>
     </div>
 
-    <script>
+     <script>
+        // ===== SUPABASE CONFIGURATION =====
+        const SUPABASE_URL = 'https://ykmzlirhxtvzxxqxrwpb.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbXpsaXJoeHR2enh4cXhyd3BiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2ODk3MDIsImV4cCI6MjA3NjI2NTcwMn0.-r9_D2czMy3fN8hPiiB6zJxZIzmucjl0ICCBYFA8-us';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Check authentication on page load
+        checkAuthentication();
+
+        async function checkAuthentication() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                // Not logged in, redirect to auth page
+                window.location.href = 'auth.html';
+                return;
+            }
+            
+            // User is logged in, show their name
+            const userName = session.user.user_metadata?.full_name || session.user.email;
+            console.log('Logged in as:', userName);
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                supabase.auth.signOut().then(() => {
+                    window.location.href = 'auth.html';
+                });
+            }
+        }
+
+        // ===== YOUR EXISTING CODE =====
         let registrations = [];
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Navigation function
         function showPage(pageId) {
-            // Hide all pages
             const allPages = document.querySelectorAll('.main-content');
             allPages.forEach(page => {
                 page.classList.remove('active');
             });
 
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
 
-            // Update active nav link
             const allNavLinks = document.querySelectorAll('.nav-link');
             allNavLinks.forEach(link => {
                 link.classList.remove('active');
             });
             event.target.classList.add('active');
 
-            // Load registrations if viewing registrations page
             if (pageId === 'registrations') {
                 loadAndDisplayRegistrations();
             }
@@ -1060,6 +1090,7 @@ color-whiteee{
                 const formData = {
                     name: nameInput.value.trim(),
                     email: emailInput.value.trim(),
+                    register_no: document.getElementById('registerNo').value.trim(),
                     phone: document.getElementById('phone').value.trim(),
                     organization: document.getElementById('organization').value.trim(),
                     role: document.getElementById('role').value,
@@ -1067,12 +1098,10 @@ color-whiteee{
                     interests: document.getElementById('interests').value.trim()
                 };
 
-                // Show loading state
                 submitBtn.disabled = true;
                 btnText.innerHTML = '<span class="loading"></span> Registering...';
 
                 try {
-                    // Send data to backend API
                     const response = await fetch('/register', {
                         method: 'POST',
                         headers: {
@@ -1084,27 +1113,23 @@ color-whiteee{
                     const result = await response.json();
 
                     if (result.success) {
-                        // Show success message
                         form.style.display = 'none';
                         successMessage.style.display = 'block';
-
                         console.log('Registration successful:', result.data);
                     } else {
                         alert('Registration failed: ' + result.error);
                     }
-
                 } catch (error) {
                     alert('Registration failed. Please check your connection and try again.');
                     console.error('Registration error:', error);
                 } finally {
-                    // Reset button state
                     submitBtn.disabled = false;
                     btnText.textContent = 'Register Now - It\'s Free!';
                 }
             });
         }
 
-        // Load registrations from backend
+        // Load registrations
         async function loadRegistrations() {
             try {
                 const response = await fetch('/registrations');
@@ -1188,7 +1213,6 @@ color-whiteee{
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            // Show home page by default
             showPage('home');
         });
     </script>

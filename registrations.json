@@ -1,12 +1,5 @@
 [
   {
-    "id": 1758961341242,
-    "name": "hvvhb",
-    "email": "vhjbjhniraanjanahj@gmail.com",
-    "timestamp": "2025-09-27T08:22:21.242Z",
-    "registrationNumber": 3
-  },
-  {
     "id": 1758961373003,
     "name": "niru",
     "email": "niranjanak1906@gmail.com",
@@ -48,5 +41,22 @@
     "interests": "",
     "timestamp": "2025-09-27T10:26:49.701Z",
     "registrationNumber": 5
+  },
+  {
+    "id": 1759083432655,
+    "name": "niranjana",
+    "phone": "",
+    "email": "abc346@gmail.com",
+    "timestamp": "2025-09-28T18:17:12.655Z",
+    "role": "student",
+    "interests": "",
+    "registrationNumber": 6
+  },
+  {
+    "id": 1760855592381,
+    "name": "NIRANJANA K",
+    "email": "asdfghqwertyu@gmail.com",
+    "timestamp": "2025-10-19T06:33:12.381Z",
+    "registrationNumber": 6
   }
 ]

@@ -1,7 +1,10 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -60,7 +63,7 @@ app.get('/', (req, res) => {
 // POST /register - Handle registration submission
 app.post('/register', async (req, res) => {
     try {
-        const { name, email, phone, organization, role, experience, interests } = req.body;
+        const { name, email } = req.body;
 
         // Validation
         if (!name || !email) {
@@ -101,15 +104,12 @@ app.post('/register', async (req, res) => {
 
         // Create new registration
         const newRegistration = {
-    id: Date.now(),
-    name: name.trim(),
-    phone: phone ? phone.trim() : '',
-    email: email.trim().toLowerCase(),
-    timestamp: new Date().toISOString(),
-    role: role || '',
-     interests: interests ? interests.trim() : '',
-    registrationNumber: registrations.length + 1
-};
+            id: Date.now(),
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            timestamp: new Date().toISOString(),
+            registrationNumber: registrations.length + 1
+        };
 
         // Add to registrations array
         registrations.push(newRegistration);
@@ -118,14 +118,9 @@ app.post('/register', async (req, res) => {
         await writeRegistrations(registrations);
 
         // Log to console
-        console.log('🎉 New Registration for Tech Summit 2025:');
+        console.log('🎉 New Registration:');
         console.log('📝 Name:', newRegistration.name);
         console.log('📧 Email:', newRegistration.email);
-        console.log('📱 Phone:', newRegistration.phone || 'Not provided');
-        console.log('🏢 Organization:', newRegistration.organization || 'Not provided');
-        console.log('👤 Role:', newRegistration.role || 'Not specified');
-        console.log('📈 Experience:', newRegistration.experience || 'Not specified');
-        console.log('🎯 Interests:', newRegistration.interests || 'Not specified');
         console.log('🕐 Time:', new Date(newRegistration.timestamp).toLocaleString());
         console.log('📊 Total Registrations:', registrations.length);
         console.log('-----------------------------------');
@@ -138,11 +133,6 @@ app.post('/register', async (req, res) => {
                 id: newRegistration.id,
                 name: newRegistration.name,
                 email: newRegistration.email,
-                phone: newRegistration.phone,
-                organization: newRegistration.organization,
-                role: newRegistration.role,
-                experience: newRegistration.experience,
-                interests: newRegistration.interests,
                 registrationNumber: newRegistration.registrationNumber,
                 timestamp: newRegistration.timestamp
             }
